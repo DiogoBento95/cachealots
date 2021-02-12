@@ -1,5 +1,6 @@
 package catchALotProject;
 
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -7,33 +8,41 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game2 {
 
-    //I mean, why not? it looks good!
+    // I mean, why not? it looks good!
     public static final int PADDING = 10;
+    // Starting positions for both whale and shark.
+    public static final int yStart = 260;
+    public static final int xShark = 810;
+    public static final int xWhale = 35;
+    //Property that holds the time the players have left.
+    public static double timer = 30;
 
     // Picture Instantiation.
-    private Picture ocean = new Picture(PADDING,PADDING,"resources/ocean.gif");
+    private Picture ocean2 = new Picture(PADDING,PADDING,"resources/ocean2.gif");
+    // Whale needs 100-50 size.
+    private Picture whaleL = new Picture(xWhale,yStart, "resources/whaleL.png");
+    private Picture whaleD = new Picture(xWhale,yStart, "resources/whaleD.png");
+    // Shark needs 100-50 size.
+    private Picture sharkD = new Picture(xShark,yStart,"resources/sharkD.gif");
+    private Picture sharkL = new Picture(xShark,yStart, "resources/sharkL.gif");
 
-    private Picture whaleL = new Picture(25,260,"resources/WhaleL.png");
-    private Picture whaleD = new Picture(25,260,"resources/WhaleD.png");
-
-    private Picture sharkD = new Picture(880,260,"resources/SharkD.png");
-    private Picture sharkL = new Picture(880,260,"resources/SharkL.png");
-
-    //ConfirmBite needs to know the pictures.
-    ConfirmBite bitten = new ConfirmBite(whaleD, whaleL, sharkD, sharkL);
+    // ConfirmBite needs to know the pictures.
+    ConfirmBiteGM2 bitten = new ConfirmBiteGM2(whaleD, whaleL, sharkD, sharkL);
 
     // Method that will start this game mode.
     public void startGM2() throws InterruptedException {
 
-        //Method to invoke the drawing of the background and of our "players".
-        ocean.draw();
-        //Pro tip: Draw the background picture first. Trust me.
+        TimerGM2 time = new TimerGM2 ( 5 ) ;
+
+        // Method to invoke the drawing of the background and of our "players".
+        ocean2.draw();
+        // Pro tip: Draw the background picture first. Trust me.
         whaleD.draw();
         sharkL.draw();
 
         // Handler instantiation.
-        WhaleKeyboardHandler whale = new WhaleKeyboardHandler(whaleL,whaleD,bitten);
-        SharkKeyboardHandler shark = new SharkKeyboardHandler(sharkD,sharkL);
+        WhaleKeyboardHandlerGM2 whale = new WhaleKeyboardHandlerGM2(whaleL,whaleD,bitten);
+        SharkKeyboardHandlerGM2 shark = new SharkKeyboardHandlerGM2(sharkD,sharkL);
 
         // Keyboard instantiation.
         Keyboard keyboard = new Keyboard(whale);
@@ -51,10 +60,33 @@ public class Game2 {
         keyboard2.addEventListener(KeyboardEvent.KEY_W,KeyboardEventType.KEY_RELEASED);
         keyboard2.addEventListener(KeyboardEvent.KEY_S,KeyboardEventType.KEY_RELEASED);
 
-        // While it's not bitten, it'll keep checking until it is, and then... GG WP Whale.
+        // Props Jhost, for your help.
+        Text showTimer = new Text(410,30,"" + timer);
+
+        // While it's not bitten, it'll keep checking until it is.
+        // When the timer ends, movement is halted.
         while(!bitten.isBitten()){
             Thread.sleep(250);
+            // ----------
+            timer -= 0.25;
+            showTimer.setText("Time left: " + timer);
+            showTimer.draw();
+            // ----------
             bitten.bite();
+            if(time.isEndTimer()){
+              whale.setEndTime(true);
+              shark.setEndTime(true);
+              // If the timer ends and the whale is still alive, game over pic is drawn.
+                Picture lose = new Picture(Game2.PADDING,Game2.PADDING,"resources/you lose.jpeg");
+                lose.draw();
+                return;
+            }
         }
+        // When bitten becomes true, it exits the while and you win pic is drawn.
+        Picture win = new Picture(Game2.PADDING,Game2.PADDING,"resources/you win.png");
+        win.draw();
+        whale.setEndTime(true);
+        shark.setEndTime(true);
+        return;
     }
 }
