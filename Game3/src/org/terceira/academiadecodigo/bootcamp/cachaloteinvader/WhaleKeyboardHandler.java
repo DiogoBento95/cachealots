@@ -6,7 +6,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class WhaleKeyboardHandler implements KeyboardHandler {
 
-    private int speed = 20;
+    private int speed = 25;
     private Picture pictureLeft;
     private Picture pictureRight;
 
@@ -29,7 +29,7 @@ public class WhaleKeyboardHandler implements KeyboardHandler {
 
         switch(keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_RIGHT:
-                if(pictureRight.getMaxX() >= 950) {
+                if(pictureRight.getMaxX() >= 910) {
                     return;
                 }
                 pictureLeft.delete();
@@ -57,7 +57,7 @@ public class WhaleKeyboardHandler implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                if(pictureLeft.getMaxY() >= 502) {
+                if(pictureLeft.getMaxY() >= 510) {
                     return;
                 }
                 pictureLeft.translate(0,speed);

@@ -89,8 +89,8 @@ public class ConfirmBite {
 
     public void newSquid() {
 
-        int randomNumberX = (int) Math.round(Math.random() * 900);
-        int randomNumberY = (int) Math.round(Math.random() * 500);
+        int randomNumberX = (int) Math.round(Math.random() * 850) + 10;
+        int randomNumberY = (int) Math.round(Math.random() * 450) + 10;
 
         squid = new Picture(randomNumberX,randomNumberY,"resources/squid.png");
         squid.draw();

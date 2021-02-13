@@ -32,8 +32,8 @@ public void init() throws InterruptedException {
     Picture sea = new Picture(PADDING,PADDING,"resources/ocean.gif");
     sea.draw();
 
-    cachaloteLeft = new Picture(450,250, "resources/WhaleL.png");
-    cachaloteRight = new Picture(450,250, "resources/whaleR.png");
+    cachaloteLeft = new Picture(460,260, "resources/WhaleL.png");
+    cachaloteRight = new Picture(460,260, "resources/whaleR.png");
     cachaloteLeft.delete();
     cachaloteRight.draw();
 
@@ -107,13 +107,13 @@ public void enemy() throws InterruptedException {
                         }
 
                         if (i < 3) {
-                            arraySharks[i].translate(-10, 0);
+                            arraySharks[i].translate(-20, 0);
                             confirmBite.bite(i);
                             Thread.sleep(20);
                             continue;
 
                         }
-                        arraySharks[i].translate(10, 0);
+                        arraySharks[i].translate(20, 0);
                         confirmBite.bite(i);
                         Thread.sleep(20);
 
