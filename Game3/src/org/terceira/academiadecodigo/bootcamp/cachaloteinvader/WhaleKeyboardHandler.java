@@ -12,6 +12,7 @@ public class WhaleKeyboardHandler implements KeyboardHandler {
 
     private boolean keyboardEndGame = false;
 
+    // constructor that receives the left and right whale
     public WhaleKeyboardHandler(Picture pictureLeft, Picture pictureRight) {
 
         this.pictureLeft = pictureLeft;
@@ -23,6 +24,8 @@ public class WhaleKeyboardHandler implements KeyboardHandler {
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
+        //  if keyboardendgame is true, the game is over
+        // is invoked after the init() on the Game3 class
         if(keyboardEndGame == true) {
             return;
         }
