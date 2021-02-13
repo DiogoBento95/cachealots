@@ -10,19 +10,15 @@ import java.util.List;
 public class ConfirmBite {
 
     private boolean squidBitten = false;
-
     private boolean cachaloteBitten = false;
-
     private Picture cachalote;
     private Picture[] shark;
     private Picture squid;
-
     private Text counter;
-
     private int squidsEaten = 0;
 
+    // constructor that receives the animals: whale, sharks array and squid
     public ConfirmBite(Picture cachalote, Picture[] shark, Picture squid) {
-
         this.cachalote = cachalote;
         this.shark = shark;
         this.squid = squid;
@@ -30,6 +26,8 @@ public class ConfirmBite {
         counter.draw();
     }
 
+    // checks if the cachalote has been bitten, plays the sound of death, hides everything
+    // will instantiate the "you loose" image
     public void bite(int j) {
             if(cachaloteBitten == true) {
                 return;
@@ -48,6 +46,9 @@ public class ConfirmBite {
 
 
             {
+                Sound sound = new Sound("/resources/vixemaria.wav");
+                sound.play(true);
+
                 List<Shape> shapes = Canvas.getInstance().getShapes();
                 shapes.clear();
                 Picture ocean = new Picture(10,10,"resources/ocean.gif");
@@ -57,6 +58,10 @@ public class ConfirmBite {
 
     }
 
+    // checks if you have caught a squid
+    // will play a sound every time you catch a squid
+    // counts the number of squids eaten
+    // plays a wav every time you eat a squid
     public void biteSquid() {
 
         if ((cachalote.getMaxX() >= squid.getX() && cachalote.getMaxX() <= squid.getMaxX()) &&
@@ -73,6 +78,9 @@ public class ConfirmBite {
 
 
         {
+
+            Sound sound = new Sound("/resources/miauf.wav");
+            sound.play(true);
             counter.delete();
             squid.delete();
             newSquid();
@@ -87,6 +95,7 @@ public class ConfirmBite {
 
     }
 
+    // instantiates a new squid in a random place
     public void newSquid() {
 
         int randomNumberX = (int) Math.round(Math.random() * 850) + 10;
@@ -101,6 +110,7 @@ public class ConfirmBite {
 
     }
 
+    // setters and getters
     public void setBiteFalse(boolean bitten) {
         cachaloteBitten = bitten;
     }

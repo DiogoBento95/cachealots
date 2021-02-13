@@ -26,8 +26,12 @@ public class Game3 {
     private Picture shark5;
     private Picture shark6;
 
-// Starts the game, instantiates the background, whale, keyboard eventlisteners and initializes the enemy method
+// Starts the game, instantiates the background, whale, keyboard eventlisteners
+// initializes the enemy method
 public void init() throws InterruptedException {
+
+    Sound sound = new Sound("/resources/puddipuddimusic.wav");
+    sound.play(true);
 
     Picture sea = new Picture(PADDING,PADDING,"resources/ocean.gif");
     sea.draw();
@@ -68,8 +72,10 @@ public void enemy() throws InterruptedException {
     arraySharks[4] = shark5;
     arraySharks[5] = shark6;
 
+    // method that receives the game's animals
     confirmBite = new ConfirmBite(cachaloteLeft, arraySharks, squid);
 
+        // checks if the whale has been bitten
         while(!confirmBite.isCachaloteBitten()) {
 
             for (int i = 0; i < 3; i++) {
@@ -84,12 +90,15 @@ public void enemy() throws InterruptedException {
                 arraySharks[i].draw();
             }
 
+            // checks the X and Y limits for the sharks to swim
             while(arraySharks[0].getX() > PADDING  && !confirmBite.isSquidBitten()) {
 
                     for (int i = 0; i < arraySharks.length; i++) {
 
+                        // invokes the method for the squid to be eaten
                         confirmBite.biteSquid();
 
+                        // if player eats X squids, he/she will win
                         if(confirmBite.getSquidsEaten() > 2) {
 
                             List<Shape> shapes = Canvas.getInstance().getShapes();
@@ -106,6 +115,7 @@ public void enemy() throws InterruptedException {
 
                         }
 
+                        // control flow for the sharks to swim
                         if (i < 3) {
                             arraySharks[i].translate(-20, 0);
                             confirmBite.bite(i);
@@ -117,6 +127,7 @@ public void enemy() throws InterruptedException {
                         confirmBite.bite(i);
                         Thread.sleep(20);
 
+                        // end game menu
                         if(confirmBite.isCachaloteBitten()) {
                             Picture endGame = new Picture(PADDING,PADDING,"resources/lost.png");
                             endGame.draw();
@@ -125,6 +136,7 @@ public void enemy() throws InterruptedException {
                     }
             }
 
+            // hides all sharks
             for (int j = 0; j < arraySharks.length; j++) {
                 arraySharks[j].delete();
             }
