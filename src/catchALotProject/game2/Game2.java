@@ -1,5 +1,6 @@
 package catchALotProject.game2;
 
+import catchALotProject.Main;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -26,7 +27,7 @@ public class Game2 {
 
 
     // Method that will start this game mode.
-    public void startGM2() throws InterruptedException {
+    public boolean startGM2() throws InterruptedException {
         Picture whaleD  = new Picture(xWhale,yStart, "resources/whaleD.png");
         // Shark needs 100-50 size.
         Picture sharkD  = new Picture(xShark,yStart, "resources/sharkD.gif");
@@ -85,7 +86,7 @@ public class Game2 {
               // If the timer ends and the whale is still alive, game over pic is drawn.
 
                 lose.draw();
-                return;
+                return Main.win = false;
             }
         }
 
@@ -93,6 +94,6 @@ public class Game2 {
         win.draw();
         whale.setEndTime(true);
         shark.setEndTime(true);
-        return;
+        return Main.win = false;
     }
 }

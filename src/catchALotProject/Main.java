@@ -12,9 +12,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.util.List;
 
 public class Main {
+        public static boolean win;
 
     public static void main(String[] args) throws InterruptedException {
         Picture menu = new Picture(10,10,"resources/menu.png");
+
         // Creating an instance of Game2 called catchALot..
         Game2 catchALot = new Game2();
 
@@ -38,20 +40,21 @@ public class Main {
 
             if (gameMenu.getGameNumber()==1){
                 menu.delete();
-                checkIfBack(gameMenu);
+                checkIfBack(gameMenu , win );
 
             }
             if (gameMenu.getGameNumber()==2){
                 menu.delete();
                 //..and invoking the startGM2 method to start the game.
                 catchALot.startGM2();
-                checkIfBack(gameMenu);
+                checkIfBack(gameMenu , win);
 
             }
             if (gameMenu.getGameNumber()==3){
                 menu.delete();
                 game.init();
-                checkIfBack(gameMenu);
+                game.enemy();
+                checkIfBack(gameMenu , win );
 
             }
 
@@ -96,7 +99,13 @@ public class Main {
 
     }
 
-    public static void checkIfBack(MenuKeyboardHandler gameMenu){
+    public static void checkIfBack(MenuKeyboardHandler gameMenu , boolean win ){
+        if ( win  ){
+            System.out.println("win");
+        }
+        if ( !win ){
+            System.out.println("looooose");
+        }
         while (gameMenu.getGameNumber()!=0){
             try {
                 Thread.sleep(50);
