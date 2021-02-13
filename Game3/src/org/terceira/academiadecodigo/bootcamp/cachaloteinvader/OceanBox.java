@@ -8,8 +8,6 @@ public class OceanBox {
 
     game.init();
 
-        System.out.println("HI");
     }
-
 
 }

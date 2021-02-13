@@ -48,16 +48,11 @@ public class ConfirmBite {
 
 
             {
-
                 List<Shape> shapes = Canvas.getInstance().getShapes();
                 shapes.clear();
                 Picture ocean = new Picture(10,10,"resources/ocean.gif");
                 ocean.draw();
-                Picture gameOver = new Picture(100,100,"resources/win.png");
-                gameOver.draw();
-
                 setBiteFalse(true);
-
             }
 
     }

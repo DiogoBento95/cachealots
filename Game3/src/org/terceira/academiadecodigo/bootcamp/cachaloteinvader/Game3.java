@@ -52,8 +52,6 @@ public void init() throws InterruptedException {
 
     whaleHandler.setKeyboardEndGameTrue();
 
-    System.out.println("DELETE ME");
-
     return;
 
 }
@@ -75,13 +73,13 @@ public void enemy() throws InterruptedException {
         while(!confirmBite.isCachaloteBitten()) {
 
             for (int i = 0; i < 3; i++) {
-                int randomY = (int) Math.round(Math.random() * 500);
-                arraySharks[i] = new Picture(869,randomY,"resources/SharkL.png");
+                int randomY = (int) Math.round(Math.random() * 460);
+                arraySharks[i] = new Picture(810,randomY,"resources/SharkL.png");
                 arraySharks[i].draw();
             }
 
             for (int i = 3; i < arraySharks.length; i++) {
-                int randomY = (int) Math.round(Math.random() * 500);
+                int randomY = (int) Math.round(Math.random() * 460);
                 arraySharks[i] = new Picture(PADDING,randomY,"resources/SharkR.png");
                 arraySharks[i].draw();
             }
@@ -100,30 +98,38 @@ public void enemy() throws InterruptedException {
                             Picture sea = new Picture(PADDING,PADDING,"resources/ocean.gif");
                             sea.draw();
 
-                            Picture youWin = new Picture(500,250,"resources/win.png");
+                            Picture youWin = new Picture(10,10,"resources/win.png");
 
                             youWin.draw();
 
                             return;
 
                         }
+
                         if (i < 3) {
                             arraySharks[i].translate(-10, 0);
                             confirmBite.bite(i);
                             Thread.sleep(20);
                             continue;
+
                         }
                         arraySharks[i].translate(10, 0);
                         confirmBite.bite(i);
                         Thread.sleep(20);
 
-                        if(confirmBite.isCachaloteBitten() == true) {return; }
-
+                        if(confirmBite.isCachaloteBitten()) {
+                            Picture endGame = new Picture(PADDING,PADDING,"resources/lost.png");
+                            endGame.draw();
+                            return;
+                        }
                     }
             }
-            System.out.println("DELETE ME FIRST");
+
+            for (int j = 0; j < arraySharks.length; j++) {
+                arraySharks[j].delete();
+            }
+
         }
-    System.out.println("DELETE ME AGAIN");
 
         return;
 
