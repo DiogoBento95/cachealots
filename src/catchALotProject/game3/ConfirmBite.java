@@ -57,7 +57,7 @@ public class ConfirmBite {
                     cachalote.getY() < squid.getMaxY() && cachalote.getMaxY() > squid.getY())
         {
 
-            SoundGame3 soundGame3 = new SoundGame3(" resources/chomp.wav");
+            SoundGame3 soundGame3 = new SoundGame3("/resources/chomp.wav");
             soundGame3.play(true);
             counter.delete();
             squid.delete();

@@ -16,7 +16,7 @@ public class Game3 {
 
     private Picture cachaloteLeft;
     private Picture squid;
-    private int delay = 11;
+    private int delay = 15;
     private ConfirmBite confirmBite;
     private WhaleKeyboardHandler whaleHandler;
 
@@ -35,7 +35,7 @@ public class Game3 {
         Picture sea = new Picture(PADDING, PADDING, "resources/ocean2.gif");
         sea.draw();
 
-        cachaloteLeft = new Picture(460, 260, "resources/WhaleL.png");
+        cachaloteLeft = new Picture(460, 260, "resources/whaleL.png");
 
         cachaloteLeft.draw();
 
@@ -105,7 +105,7 @@ public class Game3 {
 
                         whaleHandler.setKeyboardEndGameTrue();
 
-                        return Main.win == true;
+                        return Main.win = true;
 
                     }
 
@@ -128,7 +128,7 @@ public class Game3 {
 
                         whaleHandler.setKeyboardEndGameTrue();
 
-                        return Main.win == false;
+                        return Main.win = false;
                     }
                 }
             }
@@ -140,7 +140,7 @@ public class Game3 {
 
         }
         whaleHandler.setKeyboardEndGameTrue();
-        return Main.win == false;
+        return Main.win = false;
     }
 }
 

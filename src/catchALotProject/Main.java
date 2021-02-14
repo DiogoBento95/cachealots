@@ -125,6 +125,7 @@ public class Main {
         SoundMenu winOrLose = null;
         if ( win  ){
             winOrLose= new SoundMenu("/resources/youWin.wav");
+            System.out.println("ok");
             winOrLose.setLoop(10);
             winOrLose.play(true);
         }
@@ -147,7 +148,7 @@ public class Main {
     }
 
     public static void checkIfBack(MenuKeyboardHandler gameMenu){
-        SoundMenu cheer =new SoundMenu(" resources/cheering.wav");
+        SoundMenu cheer =new SoundMenu("/resources/cheering.wav");
         cheer.setLoop(5);
         cheer.play(true);
         while (gameMenu.getGameNumber()!=0){
