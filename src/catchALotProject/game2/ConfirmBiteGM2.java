@@ -25,18 +25,8 @@ public class ConfirmBiteGM2 {
     // Crucial method that will check if the shark took a bite or not.
     // PS: Thank you Rui and Sal.
     public void bite() {
-        if((whaleD.getMaxX() >= sharkD.getX() && whaleD.getMaxX() <= sharkD.getMaxX()) &&
-                ( whaleD.getMaxY() >= sharkD.getY() && whaleD.getMaxY() <= sharkD.getMaxY())
-                ||
-                (whaleD.getMaxX() >= sharkD.getX() && whaleD.getMaxX() <= sharkD.getMaxX()) &&
-                        ( whaleD.getY() >= sharkD.getY() && whaleD.getY() <= sharkD.getMaxY())
-                ||
-                ((sharkD.getMaxX() >= whaleD.getX() && sharkD.getMaxX() <= whaleD.getMaxX()) &&
-                        ( sharkD.getMaxY() >= whaleD.getY() && sharkD.getMaxY() <= whaleD.getMaxY())
-                        ||
-                        (sharkD.getMaxX() >= whaleD.getX() && sharkD.getMaxX() <= whaleD.getMaxX()) &&
-                                ( sharkD.getY() >= whaleD.getY() && sharkD.getY() <= whaleD.getMaxY())))
-        {
+        if(whaleD.getX() < sharkD.getMaxX() && whaleD.getMaxX() > sharkD.getX() &&
+                 whaleD.getY() < sharkD.getMaxY() && whaleD.getMaxY() > sharkD.getY()){
             bite = true;
             whaleD.delete();
         }

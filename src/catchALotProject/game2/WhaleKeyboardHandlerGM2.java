@@ -8,7 +8,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class WhaleKeyboardHandlerGM2 implements KeyboardHandler {
 
     private boolean endTime = false;
-    private static final int speed = 25;
+    private static final int speed = 50;
     // Needed to restrict/delete the whale.
     private ConfirmBiteGM2 bitten;
     // Pictures needed as parameters for constructor.
@@ -46,7 +46,7 @@ public class WhaleKeyboardHandlerGM2 implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             // The Ifs prevent the picture from leaving the background/canvas.
-            case KeyboardEvent.KEY_RIGHT:
+            case KeyboardEvent.KEY_L:
                 if( whaleD.getMaxX() >= 910){
                     return;
                 }
@@ -55,7 +55,7 @@ public class WhaleKeyboardHandlerGM2 implements KeyboardHandler {
                 whaleD.draw();
                 break;
 
-            case KeyboardEvent.KEY_LEFT:
+            case KeyboardEvent.KEY_J:
                 if(whaleD.getX() <= 10 ){
                     return;
                 }
@@ -65,7 +65,7 @@ public class WhaleKeyboardHandlerGM2 implements KeyboardHandler {
 
                 break;
 
-            case KeyboardEvent.KEY_UP:
+            case KeyboardEvent.KEY_I:
                 if( whaleD.getY() <= 10 ){
                     return;
                 }
@@ -74,7 +74,7 @@ public class WhaleKeyboardHandlerGM2 implements KeyboardHandler {
                 whaleD.draw();
                 break;
 
-            case KeyboardEvent.KEY_DOWN:
+            case KeyboardEvent.KEY_K:
                 if(whaleD.getMaxY() >= 510){
                     return;
                 }

@@ -32,22 +32,11 @@ public class ConfirmBite {
             if(cachaloteBitten == true) {
                 return;
             }
-            if ((cachalote.getMaxX() >= shark[j].getX() && cachalote.getMaxX() <= shark[j].getMaxX()) &&
-                    ( cachalote.getMaxY() >= shark[j].getY() && cachalote.getMaxY() <= shark[j].getMaxY())
-                    ||
-                    (cachalote.getMaxX() >= shark[j].getX() && cachalote.getMaxX() <= shark[j].getMaxX()) &&
-                           ( cachalote.getY() >= shark[j].getY() && cachalote.getY() <= shark[j].getMaxY())
-||
-        ((shark[j].getMaxX() >= cachalote.getX() && shark[j].getMaxX() <= cachalote.getMaxX()) &&
-                ( shark[j].getMaxY() >= cachalote.getY() && shark[j].getMaxY() <= cachalote.getMaxY())
-                ||
-                (shark[j].getMaxX() >= cachalote.getX() && shark[j].getMaxX() <= cachalote.getMaxX()) &&
-                        ( shark[j].getY() >= cachalote.getY() && shark[j].getY() <= cachalote.getMaxY())))
+            if (cachalote.getX() < shark[j].getMaxX() && cachalote.getMaxX() > shark[j].getX() &&
+                     cachalote.getY() < shark[j].getMaxY() && cachalote.getMaxY() > shark[j].getY())
 
 
             {
-                SoundGame3 soundGame3 = new SoundGame3(" resources/vixemaria.wav");
-                soundGame3.play(true);
 
                 List<Shape> shapes = Canvas.getInstance().getShapes();
                 shapes.clear();
@@ -64,22 +53,11 @@ public class ConfirmBite {
     // plays a wav every time you eat a squid
     public void biteSquid() {
 
-        if ((cachalote.getMaxX() >= squid.getX() && cachalote.getMaxX() <= squid.getMaxX()) &&
-                ( cachalote.getMaxY() >= squid.getY() && cachalote.getMaxY() <= squid.getMaxY())
-                ||
-                (cachalote.getMaxX() >= squid.getX() && cachalote.getMaxX() <= squid.getMaxX()) &&
-                        ( cachalote.getY() >= squid.getY() && cachalote.getY() <= squid.getMaxY())
-                ||
-                ((squid.getMaxX() >= cachalote.getX() && squid.getMaxX() <= cachalote.getMaxX()) &&
-                        ( squid.getMaxY() >= cachalote.getY() && squid.getMaxY() <= cachalote.getMaxY())
-                        ||
-                        (squid.getMaxX() >= cachalote.getX() && squid.getMaxX() <= cachalote.getMaxX()) &&
-                                ( squid.getY() >= cachalote.getY() && squid.getY() <= cachalote.getMaxY())))
-
-
+        if (cachalote.getX() < squid.getMaxX() && cachalote.getMaxX() > squid.getX() &&
+                    cachalote.getY() < squid.getMaxY() && cachalote.getMaxY() > squid.getY())
         {
 
-            SoundGame3 soundGame3 = new SoundGame3(" resources/miauf.wav");
+            SoundGame3 soundGame3 = new SoundGame3(" resources/chomp.wav");
             soundGame3.play(true);
             counter.delete();
             squid.delete();

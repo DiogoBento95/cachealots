@@ -14,14 +14,14 @@ public class Game2 {
     // Starting positions for both whale and shark.
     public static final int yStart = 260;
     public static final int xShark = 810;
-    public static final int xWhale = 35;
+    public static final int xWhale = 60;
     //Property that holds the time the players have left.
     public static double timer;
-    private Picture win =new Picture(Game2.PADDING,Game2.PADDING, "resources/you win.png"); ;
+    private Picture win =new Picture(Game2.PADDING,Game2.PADDING, "resources/SharkWinsFinal.png"); ;
 
     // Picture Instantiation.
     private Picture ocean2 = new Picture(PADDING,PADDING, "resources/ocean2.gif");
-    Picture lose = new Picture(Game2.PADDING,Game2.PADDING, "resources/you lose.jpeg");
+    Picture lose = new Picture(Game2.PADDING,Game2.PADDING, "resources/WhaleWinsFinal.png");
 
     // ConfirmBite needs to know the pictures.
 
@@ -56,10 +56,10 @@ public class Game2 {
         Keyboard keyboard2 = new Keyboard(shark);
 
         // Whale Keys.
-        keyboard.addEventListener(KeyboardEvent.KEY_RIGHT, KeyboardEventType.KEY_RELEASED);
-        keyboard.addEventListener(KeyboardEvent.KEY_LEFT, KeyboardEventType.KEY_RELEASED);
-        keyboard.addEventListener(KeyboardEvent.KEY_UP, KeyboardEventType.KEY_RELEASED);
-        keyboard.addEventListener(KeyboardEvent.KEY_DOWN, KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(KeyboardEvent.KEY_L, KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(KeyboardEvent.KEY_J,KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(KeyboardEvent.KEY_I, KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(KeyboardEvent.KEY_K, KeyboardEventType.KEY_RELEASED);
 
         // Shark Keys.
         keyboard2.addEventListener(KeyboardEvent.KEY_D,KeyboardEventType.KEY_RELEASED);

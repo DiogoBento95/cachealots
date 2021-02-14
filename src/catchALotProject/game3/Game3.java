@@ -18,7 +18,6 @@ public class Game3 {
     private Picture squid;
     private int delay = 11;
     private ConfirmBite confirmBite;
-    private SoundGame3 soundGame3 = new SoundGame3(" resources/puddipuddimusic.wav");
     private WhaleKeyboardHandler whaleHandler;
 
     private Picture shark1;
@@ -32,7 +31,6 @@ public class Game3 {
 // initializes the enemy method
     public void init() throws InterruptedException {
 
-        soundGame3.play(true);
 
         Picture sea = new Picture(PADDING, PADDING, "resources/ocean2.gif");
         sea.draw();
@@ -58,14 +56,14 @@ public class Game3 {
     // Instantiates sharks and moves them against the wale
     public boolean enemy() throws InterruptedException {
 
-        Picture[] arraySharks = new Picture[6];
+        Picture[] arraySharks = new Picture[5];
 
         arraySharks[0] = shark1;
         arraySharks[1] = shark2;
         arraySharks[2] = shark3;
         arraySharks[3] = shark4;
         arraySharks[4] = shark5;
-        arraySharks[5] = shark6;
+        //arraySharks[5] = shark6;
 
         // method that receives the game's animals
         confirmBite = new ConfirmBite(cachaloteLeft, arraySharks, squid);
@@ -94,19 +92,17 @@ public class Game3 {
                     confirmBite.biteSquid();
 
                     // if player eats X squids, he/she will win
-                    if (confirmBite.getSquidsEaten() > 10) {
+                    if (confirmBite.getSquidsEaten() == 10) {
 
                         List<Shape> shapes = Canvas.getInstance().getShapes();
                         shapes.clear();
 
-                        Picture sea = new Picture(PADDING, PADDING, "resources/ocean2.gif");
-                        sea.draw();
+
 
                         Picture youWin = new Picture(10, 10, "resources/you win.png");
 
                         youWin.draw();
 
-                        soundGame3.stop();
                         whaleHandler.setKeyboardEndGameTrue();
 
                         return Main.win == true;
@@ -130,7 +126,6 @@ public class Game3 {
                         Picture endGame = new Picture(PADDING, PADDING, "resources/you lose.jpeg");
                         endGame.draw();
 
-                        soundGame3.stop();
                         whaleHandler.setKeyboardEndGameTrue();
 
                         return Main.win == false;
@@ -144,7 +139,6 @@ public class Game3 {
             }
 
         }
-        soundGame3.stop();
         whaleHandler.setKeyboardEndGameTrue();
         return Main.win == false;
     }
